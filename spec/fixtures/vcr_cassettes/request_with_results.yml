@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.firmenwissen.de/search/suggest/companywithaddress/COMPEON%20GmbH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.firmenwissen.de
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Sep 2017 12:53:36 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - JSESSIONID=node0k1lao59yf7xe11muqyxc6m1b165290.node0;Path=/
+      X-Application-Context:
+      - application:live:20990
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJxdWVyeSI6IkNPTVBFT04gR21iSCIsInN1Z2dlc3Rpb25DYXRlZ29yeSI6IkNvbXBhbmllc1dpdGhBZGRyZXNzIiwiY29tcGFueU5hbWVTdWdnZXN0aW9ucyI6W3siY3JlZm9udW1tZXIiOiIyMTUxNjMwMDQ5IiwibmFtZSI6IkNPTVBFT04gR21iSCIsImhhbmRlbHNOYW1lIjpudWxsLCJsYW5kIjoiREUiLCJidW5kZXNsYW5kIjoiTm9yZHJoZWluLVdlc3RmYWxlbiIsInBseiI6IjQwMjExIiwib3J0IjoiRMO8c3NlbGRvcmYiLCJzdHJhc3NlSGF1c251bW1lciI6IkxvdWlzZS1EdW1vbnQtU3RyLiA1In1dfQ==
+    http_version: 
+  recorded_at: Thu, 28 Sep 2017 12:53:36 GMT
+recorded_with: VCR 3.0.3
