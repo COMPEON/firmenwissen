@@ -4,10 +4,11 @@ describe Firmenwissen::Request::Mock do
   include ConfigurationHelper
 
   let(:query) { 'test' }
+  let(:params) { { country: 'DE' } }
   let(:mock_data) { [] }
   let(:response_mock) { double }
 
-  subject { described_class.new(query) }
+  subject { described_class.new(query, params: params) }
 
   before do
     mock_configuration do |config|
@@ -20,7 +21,7 @@ describe Firmenwissen::Request::Mock do
   describe '#execute' do
     it 'returns a Response::Mock with mock data' do
       expect(subject.execute).to eq(response_mock)
-      expect(Firmenwissen::Response::Mock).to have_received(:new).with(mock_data, query)
+      expect(Firmenwissen::Response::Mock).to have_received(:new).with(mock_data, query, params)
     end
   end
 end

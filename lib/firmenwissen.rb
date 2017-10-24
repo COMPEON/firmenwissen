@@ -1,5 +1,6 @@
 require 'json'
 require 'net/http'
+require 'addressable/template'
 
 require 'firmenwissen/configuration'
 require 'firmenwissen/http_request'

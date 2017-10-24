@@ -13,7 +13,7 @@ module Firmenwissen
     SETTINGS = %i[endpoint password mock_data mock_requests timeout user]
 
     DEFAULT_SETTINGS = {
-      endpoint: 'https://www.firmenwissen.de/search/suggest/companywithaddress/%s',
+      endpoint: 'https://www.firmenwissen.de/search/suggest/companywithaddress/{query}{?country}',
       mock_requests: false,
       mock_data: [],
       timeout: 5

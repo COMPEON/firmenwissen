@@ -48,11 +48,12 @@ describe Firmenwissen::Response::Mock do
 
     context 'with a proc' do
       let(:query) { 'COMPEON' }
+      let(:params) { { country: 'DE' } }
       let(:proc_or_lambda) { double(call: [{}, {}]) }
 
       it 'returns a suggestions array' do
-        expect(described_class.new(proc_or_lambda, query).suggestions.size).to eq(2)
-        expect(proc_or_lambda).to have_received(:call).with(query)
+        expect(described_class.new(proc_or_lambda, query, params).suggestions.size).to eq(2)
+        expect(proc_or_lambda).to have_received(:call).with(query, params)
       end
     end
   end

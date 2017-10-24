@@ -16,7 +16,7 @@ module Firmenwissen
 
     protected
 
-    attr_reader :uri, :options
+    attr_reader :uri, :options, :params
 
     def request
       @request ||= begin

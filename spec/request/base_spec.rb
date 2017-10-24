@@ -37,15 +37,25 @@ describe Firmenwissen::Request::Base do
     end
 
     describe '#uri' do
+      let(:options) { {} }
+
+      subject { described_class.new('test 123', options).__send__(:uri).to_s }
+
       before do
         mock_configuration do |config|
-          config.endpoint = 'http://example-endpoint.com/index.php?q=%s'
+          config.endpoint = 'http://example-endpoint.com/{query}{?country}'
         end
       end
 
-      subject { described_class.new('test 123').__send__(:uri) }
+      it { is_expected.to eq('http://example-endpoint.com/test%20123') }
 
-      it { is_expected.to eq(URI('http://example-endpoint.com/index.php?q=test%20123')) }
+      context 'with params' do
+        let(:options) { { params: { country: 'DE' } } }
+
+        it 'adds the parameters to the uri' do
+          expect(subject).to eq('http://example-endpoint.com/test%20123?country=DE')
+        end
+      end
     end
   end
 end

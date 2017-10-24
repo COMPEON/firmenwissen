@@ -1,15 +1,16 @@
 module Firmenwissen
   module Response
     class Mock < Base
-      def initialize(mock_data, query)
+      def initialize(mock_data, query, params = {})
         @mock_data = mock_data
         @query = query
+        @params = params
 
         raise ArgumentError, 'mock data must either be an array, a hash or respond to `call`' unless mock_data_valid?
       end
 
       def data
-        return mock_data.call(query) if mock_data.respond_to?(:call)
+        return mock_data.call(query, params) if mock_data.respond_to?(:call)
 
         case mock_data
         when Array
@@ -27,7 +28,7 @@ module Firmenwissen
 
       private
 
-      attr_reader :mock_data, :query
+      attr_reader :mock_data, :query, :params
 
       def mock_data_valid?
         mock_data.respond_to?(:call) || mock_data.is_a?(Array) || mock_data.is_a?(Hash)

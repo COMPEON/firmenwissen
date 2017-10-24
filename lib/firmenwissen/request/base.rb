@@ -4,6 +4,7 @@ module Firmenwissen
       def initialize(query, options = {})
         @query = query
         @options = options
+        @params = options.fetch(:params, {})
 
         raise CredentialsError unless config.credentials_present?
       end
@@ -14,14 +15,15 @@ module Firmenwissen
 
       protected
 
-      attr_reader :options, :query
+      attr_reader :options, :query, :params
 
       def http_request
         HttpRequest.new(uri, options)
       end
 
       def uri
-        URI(format(config.endpoint, URI.escape(query)))
+        template = Addressable::Template.new(config.endpoint)
+        template.expand(query: query, **params)
       end
 
       def config
