@@ -50,6 +50,14 @@ describe Firmenwissen::Response::Base do
         expect(subject.suggestions).to be_empty
       end
     end
+
+    context 'with an invalid response' do
+      let(:http_response_stub) { double(body: '<html></html>') }
+
+      it 'throws an exception' do
+        expect { subject }.to raise_exception(Firmenwissen::UnprocessableResponseError)
+      end
+    end
   end
 
   describe '#data' do
