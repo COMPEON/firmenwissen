@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    firmenwissen (0.1.0)
+    firmenwissen (1.0.1)
       addressable
 
 GEM
@@ -52,4 +52,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.3
+   1.16.0
