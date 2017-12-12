@@ -53,8 +53,15 @@ describe Firmenwissen::Response::Base do
   end
 
   describe '#data' do
+    let(:expected_result) do
+      [
+        Firmenwissen::KeyMapper.from_api(suggestions.fetch('companyNameSuggestions').first),
+        Firmenwissen::KeyMapper.from_api(suggestions.fetch('companyNameSuggestions').last),
+      ]
+    end
+
     it 'returns mapped data' do
-      expect(subject.data).to eq(subject.__send__(:map_response, (suggestions['companyNameSuggestions'])))
+      expect(subject.data).to eq(expected_result)
     end
   end
 end
