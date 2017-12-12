@@ -1,18 +1,16 @@
 module Firmenwissen
   module Response
     class Base
+      attr_reader :suggestions
+
       def initialize(http_response)
         @http_response = http_response
-      end
-
-      def suggestions
-        @suggestions ||= data.map { |suggestion| Suggestion.new(suggestion) }
+        @suggestions = build_suggestions
       end
 
       def data
-        api_response = JSON.parse(http_response.body).fetch('companyNameSuggestions', [])
-        map_response(api_response)
-      rescue JSON::ParseError
+        @data ||= parsed_response.map { |hash| map_keys(hash) }
+      rescue JSON::ParserError
         raise UnprocessableResponseError
       end
 
@@ -28,10 +26,16 @@ module Firmenwissen
 
       attr_reader :http_response
 
-      def map_response(api_response)
-        api_response.map do |hash|
-          KeyMapper.from_api(hash)
-        end
+      def build_suggestions
+        data.map { |suggestion| Suggestion.new(suggestion) }
+      end
+
+      def map_keys(hash)
+        KeyMapper.from_api(hash)
+      end
+
+      def parsed_response
+        JSON.parse(http_response.body).fetch('companyNameSuggestions', [])
       end
     end
   end
