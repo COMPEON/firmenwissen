@@ -11,8 +11,9 @@ module Firmenwissen
 
       def data
         api_response = JSON.parse(http_response.body).fetch('companyNameSuggestions', [])
-
         map_response(api_response)
+      rescue JSON::ParseError
+        raise UnprocessableResponseError
       end
 
       def status_code
