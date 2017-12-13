@@ -10,6 +10,7 @@ require 'firmenwissen/suggestion'
 require 'firmenwissen/version'
 
 require 'firmenwissen/errors/credentials_error'
+require 'firmenwissen/errors/unprocessable_response_error'
 
 require 'firmenwissen/request/base'
 require 'firmenwissen/request/mock'

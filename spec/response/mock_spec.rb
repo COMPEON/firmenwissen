@@ -4,7 +4,9 @@ describe Firmenwissen::Response::Mock do
   describe '#new' do
     let(:test_object) do
       Class.new do
-        def call; end
+        def call(*)
+          []
+        end
       end.new
     end
 
@@ -17,7 +19,7 @@ describe Firmenwissen::Response::Mock do
     end
 
     it 'works with procs' do
-      expect { described_class.new(Proc.new {}, '') }.to_not raise_exception
+      expect { described_class.new(Proc.new { [] }, '') }.to_not raise_exception
     end
 
     it 'works with classes implementing `call`' do

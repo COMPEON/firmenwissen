@@ -5,6 +5,7 @@ module Firmenwissen
         @mock_data = mock_data
         @query = query
         @params = params
+        @suggestions = build_suggestions
 
         raise ArgumentError, 'mock data must either be an array, a hash or respond to `call`' unless mock_data_valid?
       end
