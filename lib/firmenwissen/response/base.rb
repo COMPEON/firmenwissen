@@ -11,7 +11,7 @@ module Firmenwissen
       def data
         @data ||= parsed_response.map { |hash| map_keys(hash) }
       rescue JSON::ParserError
-        raise UnprocessableResponseError
+        raise UnprocessableResponseError, "The response from Firmenwissen could not be processed:\n#{body}"
       end
 
       def status_code
@@ -26,6 +26,10 @@ module Firmenwissen
 
       attr_reader :http_response
 
+      def body
+        http_response.body
+      end
+
       def build_suggestions
         data.map { |suggestion| Suggestion.new(suggestion) }
       end
@@ -35,7 +39,7 @@ module Firmenwissen
       end
 
       def parsed_response
-        JSON.parse(http_response.body).fetch('companyNameSuggestions', [])
+        JSON.parse(body).fetch('companyNameSuggestions', [])
       end
     end
   end
