@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    firmenwissen (1.0.1)
+    firmenwissen (1.0.2)
       addressable
 
 GEM
