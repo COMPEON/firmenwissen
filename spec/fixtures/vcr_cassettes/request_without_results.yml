@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.firmenwissen.de/search/suggest/companywithaddress/Non%20existing%20company%20xyz
+    uri: https://www.firmenwissen.de/search/suggest/companywithaddress/Non%20existing%20company%20xyz
     body:
       encoding: US-ASCII
       string: ''
@@ -13,15 +13,13 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-      Host:
-      - www.firmenwissen.de
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 28 Sep 2017 12:53:36 GMT
+      - Wed, 24 Jan 2018 13:59:19 GMT
       X-Content-Type-Options:
       - nosniff
       X-Xss-Protection:
@@ -35,7 +33,7 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Set-Cookie:
-      - JSESSIONID=node0p94rszl3w3en6mwsm1hq541a65291.node0;Path=/
+      - JSESSIONID=node013vja0zzahyh9luqih2jhh1y4318.node0;Path=/
       X-Application-Context:
       - application:live:20990
       Content-Type:
@@ -46,5 +44,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"query":"Non existing company xyz","suggestionCategory":"CompaniesWithAddress","companyNameSuggestions":[]}'
     http_version: 
-  recorded_at: Thu, 28 Sep 2017 12:53:36 GMT
+  recorded_at: Wed, 24 Jan 2018 13:59:19 GMT
 recorded_with: VCR 3.0.3

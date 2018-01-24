@@ -17,7 +17,7 @@ describe Firmenwissen::HttpRequest do
     let(:http_get_mock) { double(basic_auth: true) }
 
     before do
-      allow(Net::HTTP).to receive(:start).with(uri.host).and_return(http_mock)
+      allow(Net::HTTP).to receive(:start).with(uri.host, use_ssl: true).and_return(http_mock)
       allow(Net::HTTP::Get).to receive(:new).with(uri).and_return(http_get_mock)
 
       subject.execute

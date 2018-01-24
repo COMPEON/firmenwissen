@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.firmenwissen.de/search/suggest/companywithaddress/COMPEON%20GmbH
+    uri: https://www.firmenwissen.de/search/suggest/companywithaddress/COMPEON%20GmbH
     body:
       encoding: US-ASCII
       string: ''
@@ -13,15 +13,13 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-      Host:
-      - www.firmenwissen.de
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Thu, 28 Sep 2017 12:53:36 GMT
+      - Wed, 24 Jan 2018 13:59:19 GMT
       X-Content-Type-Options:
       - nosniff
       X-Xss-Protection:
@@ -38,8 +36,8 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"timestamp":1506603216876,"status":401,"error":"Unauthorized","message":"Bad
+      string: '{"timestamp":1516802359754,"status":401,"error":"Unauthorized","message":"Bad
         credentials","path":"/search/suggest/companywithaddress/COMPEON%20GmbH"}'
     http_version: 
-  recorded_at: Thu, 28 Sep 2017 12:53:36 GMT
+  recorded_at: Wed, 24 Jan 2018 13:59:19 GMT
 recorded_with: VCR 3.0.3
