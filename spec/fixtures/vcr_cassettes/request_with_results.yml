@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.firmenwissen.de/search/suggest/companywithaddress/COMPEON%20GmbH
+    uri: https://www.firmenwissen.de/search/suggest/companywithaddress/COMPEON%20GmbH
     body:
       encoding: US-ASCII
       string: ''
@@ -13,15 +13,13 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-      Host:
-      - www.firmenwissen.de
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 28 Sep 2017 12:53:36 GMT
+      - Wed, 24 Jan 2018 13:59:19 GMT
       X-Content-Type-Options:
       - nosniff
       X-Xss-Protection:
@@ -35,7 +33,7 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Set-Cookie:
-      - JSESSIONID=node0k1lao59yf7xe11muqyxc6m1b165290.node0;Path=/
+      - JSESSIONID=node0y9e85ehafesg6aitob4ovstx314.node0;Path=/
       X-Application-Context:
       - application:live:20990
       Content-Type:
@@ -45,7 +43,13 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJxdWVyeSI6IkNPTVBFT04gR21iSCIsInN1Z2dlc3Rpb25DYXRlZ29yeSI6IkNvbXBhbmllc1dpdGhBZGRyZXNzIiwiY29tcGFueU5hbWVTdWdnZXN0aW9ucyI6W3siY3JlZm9udW1tZXIiOiIyMTUxNjMwMDQ5IiwibmFtZSI6IkNPTVBFT04gR21iSCIsImhhbmRlbHNOYW1lIjpudWxsLCJsYW5kIjoiREUiLCJidW5kZXNsYW5kIjoiTm9yZHJoZWluLVdlc3RmYWxlbiIsInBseiI6IjQwMjExIiwib3J0IjoiRMO8c3NlbGRvcmYiLCJzdHJhc3NlSGF1c251bW1lciI6IkxvdWlzZS1EdW1vbnQtU3RyLiA1In1dfQ==
+        eyJxdWVyeSI6IkNPTVBFT04gR21iSCIsInN1Z2dlc3Rpb25DYXRlZ29yeSI6
+        IkNvbXBhbmllc1dpdGhBZGRyZXNzIiwiY29tcGFueU5hbWVTdWdnZXN0aW9u
+        cyI6W3siY3JlZm9udW1tZXIiOiIyMTUxNjMwMDQ5IiwibmFtZSI6IkNPTVBF
+        T04gR21iSCIsImhhbmRlbHNOYW1lIjpudWxsLCJsYW5kIjoiREUiLCJidW5k
+        ZXNsYW5kIjoiTm9yZHJoZWluLVdlc3RmYWxlbiIsInBseiI6IjQwMjExIiwi
+        b3J0IjoiRMO8c3NlbGRvcmYiLCJzdHJhc3NlSGF1c251bW1lciI6IkFtIFdl
+        aHJoYWhuIDEwMCJ9XX0=
     http_version: 
-  recorded_at: Thu, 28 Sep 2017 12:53:36 GMT
+  recorded_at: Wed, 24 Jan 2018 13:59:19 GMT
 recorded_with: VCR 3.0.3
