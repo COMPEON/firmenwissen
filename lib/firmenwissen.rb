@@ -7,6 +7,7 @@ require 'firmenwissen/http_request'
 require 'firmenwissen/key_mapper'
 require 'firmenwissen/request'
 require 'firmenwissen/suggestion'
+require 'firmenwissen/uri_decorator'
 require 'firmenwissen/version'
 
 require 'firmenwissen/errors/credentials_error'

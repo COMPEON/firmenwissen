@@ -6,7 +6,7 @@ module Firmenwissen
     end
 
     def execute
-      http = Net::HTTP.start(uri.host, use_ssl: true)
+      http = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.use_ssl?)
       http.read_timeout = config.timeout
       http.request(request)
     ensure

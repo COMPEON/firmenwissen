@@ -23,7 +23,7 @@ module Firmenwissen
 
       def uri
         template = Addressable::Template.new(config.endpoint)
-        template.expand(query: query, **params)
+        URIDecorator.new(template.expand(query: query, **params))
       end
 
       def config
