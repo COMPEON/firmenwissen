@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Firmenwissen::HttpRequest do
-  let(:uri) { URI('http://example.com/test') }
+  let(:uri) { Addressable::URI.parse('http://example.com/test') }
   let(:decorated_uri) { URIDecorator.new(uri) }
   let(:options) { { user: 'user', password: 'password', timeout: 10 } }
 
