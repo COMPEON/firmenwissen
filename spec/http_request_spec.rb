@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Firmenwissen::HttpRequest do
-  let(:uri) { URI('http://example.com/test') }
+  let(:uri) { Addressable::URI.parse('http://example.com/test') }
+  let(:decorated_uri) { URIDecorator.new(uri) }
   let(:options) { { user: 'user', password: 'password', timeout: 10 } }
 
-  subject { described_class.new(uri, options) }
+  subject { described_class.new(decorated_uri, options) }
 
   describe '#execute' do
     let(:http_mock) do
@@ -17,8 +18,8 @@ describe Firmenwissen::HttpRequest do
     let(:http_get_mock) { double(basic_auth: true) }
 
     before do
-      allow(Net::HTTP).to receive(:start).with(uri.host, use_ssl: true).and_return(http_mock)
-      allow(Net::HTTP::Get).to receive(:new).with(uri).and_return(http_get_mock)
+      allow(Net::HTTP).to receive(:start).with('example.com', 80, use_ssl: false).and_return(http_mock)
+      allow(Net::HTTP::Get).to receive(:new).with(decorated_uri).and_return(http_get_mock)
 
       subject.execute
     end
