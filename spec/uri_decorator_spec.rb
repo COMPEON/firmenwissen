@@ -1,6 +1,6 @@
 describe 'URIDecorator' do
   describe '#port' do
-    subject { URIDecorator.new(URI(endpoint)).port }
+    subject { URIDecorator.new(Addressable::URI.parse(endpoint)).port }
 
     context 'with an https uri' do
       let(:endpoint) { 'https://www.firmenwissen.de' }
@@ -22,7 +22,7 @@ describe 'URIDecorator' do
   end
 
   describe '#use_ssl?' do
-    subject { URIDecorator.new(URI(endpoint)).use_ssl? }
+    subject { URIDecorator.new(Addressable::URI.parse(endpoint)).use_ssl? }
 
     context 'with an https uri' do
       let(:endpoint) { 'https://www.firmenwissen.de' }
