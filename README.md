@@ -51,9 +51,9 @@ Firmenwissen.configure do |config|
   config.user     = 'username'     # Username for Firmenwissen basic auth (required)
   config.password = 'password'     # Password for Firmenwissen basic auth (required)
   config.timeout  = 5              # Request timeout in seconds
-  
+
   # Configure the endpoint yourself. %s will be replaced by the actual query
-  config.endpoint = 'https://example.com/search?query=%s'
+  config.endpoint = 'https://example.com/search?query={query}'
 end
 ```
 ### Mocking results
@@ -62,10 +62,10 @@ In a non production-like environment you will not want to perform real requests 
 ```ruby
 Firmenwissen.configure do |config|
   config.mock_requests = true
-  
+
   # respond with a fixed array
   config.mock_data = [{ crefo_id: '1111111111', name: 'Test GmbH', ... }, { ... }, ...]
-  
+
   # respond when a query matches an exact keyword
   # this will return a result mock when you search for 'compeon' or 'test', otherwise an empty result
   mock_data = {
@@ -74,20 +74,20 @@ Firmenwissen.configure do |config|
   }
 
   config.mock_data = mock_data
-  
+
   # generate your own dynamic response
   config.mock_data = Proc.new do |query|
     # your code for mock data generation here
   end
- 
+
   # or
-  
+
   class DynamicMockData
     def call(query)
       # your code for mock data generation here
     end
   end
-  
+
   config.mock_data = DynamicMockData.new
 end
 ```
