@@ -38,7 +38,7 @@ module Firmenwissen
     end
 
     def session_cookie
-      @session_cookie ||= Firmenwissen::Session.to_cookie
+      @session_cookie ||= Firmenwissen::Session.to_cookie_string
     end
   end
 end

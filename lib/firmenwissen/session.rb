@@ -19,7 +19,7 @@ module Firmenwissen
       end
     end
 
-    def to_cookie
+    def to_cookie_string
       cookies.map { |entry| [entry].join('=') }.join('; ')
     end
   end

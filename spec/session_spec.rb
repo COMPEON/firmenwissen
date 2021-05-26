@@ -48,8 +48,8 @@ describe Firmenwissen::Session do
     end
   end
 
-  describe '#to_cookie' do
-    subject { Firmenwissen::Session.to_cookie }
+  describe '#to_cookie_string' do
+    subject { Firmenwissen::Session.to_cookie_string }
 
     before do
       allow(Firmenwissen::Session).to receive(:cookies).and_return(persisted_cookies)

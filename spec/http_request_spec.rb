@@ -41,7 +41,7 @@ describe Firmenwissen::HttpRequest do
       let(:options) { { user: 'user', password: 'password', timeout: 10, persistent_session: true } }
 
       before do
-        allow(Firmenwissen::Session).to receive(:to_cookie).and_return(session_cookie)
+        allow(Firmenwissen::Session).to receive(:to_cookie_string).and_return(session_cookie)
       end
 
       context 'when session information is present' do
