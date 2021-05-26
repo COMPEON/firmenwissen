@@ -10,12 +10,13 @@ module Firmenwissen
       end
     end
 
-    SETTINGS = %i[endpoint password mock_data mock_requests timeout user]
+    SETTINGS = %i[endpoint password mock_data mock_requests persistent_session timeout user]
 
     DEFAULT_SETTINGS = {
       endpoint: 'https://www.firmenwissen.de/search/suggest/companywithaddress/{query}{?country}',
       mock_requests: false,
       mock_data: [],
+      persistent_session: false,
       timeout: 5
     }.freeze
 
@@ -45,6 +46,10 @@ module Firmenwissen
 
     def mock_requests?
       mock_requests
+    end
+
+    def persistent_session?
+      persistent_session
     end
   end
 end
