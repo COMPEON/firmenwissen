@@ -9,7 +9,7 @@ describe Firmenwissen::Session do
     around(:each) do |example|
       Firmenwissen::Session.instance_variable_set(:@cookies, initial_cookie_state)
       example.run
-      Firmenwissen::Session.instance_variable_set(:@cookies, {})
+      Firmenwissen::Session.instance_variable_set(:@cookies, initial_cookie_state)
     end
 
     context 'when no set-cookie headers are passed' do
