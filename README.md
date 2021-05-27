@@ -48,9 +48,10 @@ suggestion.to_h # => { crefo_id: '1234567890', name: 'COMPEON GmbH', ... }
 ### Configuration
 ```ruby
 Firmenwissen.configure do |config|
-  config.user     = 'username'     # Username for Firmenwissen basic auth (required)
-  config.password = 'password'     # Password for Firmenwissen basic auth (required)
-  config.timeout  = 5              # Request timeout in seconds
+  config.user     = 'username'      # Username for Firmenwissen basic auth (required)
+  config.password = 'password'      # Password for Firmenwissen basic auth (required)
+  config.timeout  = 5               # Request timeout in seconds
+  config.persistent_session = false # Whether to store/use session information for subsequent requests
 
   # Configure the endpoint yourself. %s will be replaced by the actual query
   config.endpoint = 'https://example.com/search?query={query}'
@@ -92,6 +93,9 @@ Firmenwissen.configure do |config|
 end
 ```
 **Note:** All configuration options can be overridden on a per-request basis by passing an options hash to the `search` method.
+
+### On sessions
+Session information is stored globally and used for _all_ subsequent requests made via the Firmenwissen gem if `persistent_session` is active.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
