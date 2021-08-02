@@ -35,7 +35,7 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     safe_yaml (1.0.4)
-    vcr (3.0.3)
+    vcr (6.0.0)
     webmock (3.0.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
