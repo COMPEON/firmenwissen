@@ -1,3 +1,5 @@
+require 'delegate'
+
 class URIDecorator < SimpleDelegator
   def port
     inferred_port
