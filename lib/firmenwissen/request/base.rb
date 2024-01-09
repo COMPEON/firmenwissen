@@ -6,7 +6,14 @@ module Firmenwissen
         @options = options
         @params = options.fetch(:params, {})
 
-        raise CredentialsError unless config.credentials_present?
+        case config.authentication_strategy
+        when "basic"
+          raise CredentialsError unless config.credentials_present?
+        when "api_key"
+          raise ApiKeyError unless config.api_key_present?
+        else
+          raise AuthenticationStrategyError
+        end
       end
 
       def execute

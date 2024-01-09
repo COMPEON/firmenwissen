@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Firmenwissen::Configuration do
   it 'responds to all configuration options' do
-    %i[endpoint password mock_data mock_requests timeout user].each do |setting|
+    %i[endpoint password mock_data mock_requests timeout user api_key authentication_strategy].each do |setting|
       expect(described_class.new).to respond_to(setting)
     end
   end
@@ -13,6 +13,14 @@ describe Firmenwissen::Configuration do
       expect(described_class.new(user: '', password: 'pass').credentials_present?).to eq(false)
       expect(described_class.new(user: 'user', password: '').credentials_present?).to eq(false)
       expect(described_class.new(user: 'user', password: nil).credentials_present?).to eq(false)
+    end
+  end
+
+  describe '#api_key_present?' do
+    it 'validates the API Key' do
+      expect(described_class.new(api_key: 'my-auth-api_key').api_key_present?).to eq(true)
+      expect(described_class.new(api_key: '').api_key_present?).to eq(false)
+      expect(described_class.new(api_key: nil).api_key_present?).to eq(false)
     end
   end
 

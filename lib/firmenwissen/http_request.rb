@@ -21,7 +21,8 @@ module Firmenwissen
     def request
       @request ||= begin
         Net::HTTP::Get.new(uri).tap do |req|
-          req.basic_auth(config.user, config.password)
+          req.basic_auth(config.user, config.password) if config.authentication_strategy == "basic"
+          req.add_field('API-KEY', config.api_key) if config.authentication_strategy == "api_key"
           req.add_field('Cookie', session_cookie) if config.persistent_session? && !session_cookie.empty?
         end
       end
