@@ -45,9 +45,10 @@ suggestion.address # => 'Louise-Dumon-Straße 5'
 
 suggestion.to_h # => { crefo_id: '1234567890', name: 'COMPEON GmbH', ... }
 ```
-### Configuration
+### Basic Auth Configuration
 ```ruby
 Firmenwissen.configure do |config|
+  config.authentication_strategy = 'basic' # This is set to 'basic' by default, eliminating the need for explicit configuration.
   config.user     = 'username'      # Username for Firmenwissen basic auth (required)
   config.password = 'password'      # Password for Firmenwissen basic auth (required)
   config.timeout  = 5               # Request timeout in seconds
@@ -57,6 +58,19 @@ Firmenwissen.configure do |config|
   config.endpoint = 'https://example.com/search?query={query}'
 end
 ```
+### Api Key Configuration
+```ruby
+Firmenwissen.configure do |config|
+  config.authentication_strategy = 'api_key' # Mandatory for all options except 'basic' (required)
+  config.api_key  = 'your api key'  # API Key for Firmenwissen API Key authentication (required)
+  config.timeout  = 5               # Request timeout in seconds
+  config.persistent_session = false # Whether to store/use session information for subsequent requests
+
+  # Configure the endpoint yourself. %s will be replaced by the actual query
+  config.endpoint = 'https://example.com/search?query={query}'
+end
+```
+
 ### Mocking results
 In a non production-like environment you will not want to perform real requests to the API. Thus you can configure the gem to respond with mocked data.
 
