@@ -25,9 +25,32 @@ describe Firmenwissen::HttpRequest do
       allow(Net::HTTP::Get).to receive(:new).with(decorated_uri).and_return(http_get_mock)
     end
 
-    it 'configures basic auth' do
-      subject.execute
-      expect(http_get_mock).to have_received(:basic_auth).with(options[:user], options[:password])
+    describe 'when authentication strategy is basic' do
+      let(:options) { { user: 'user', password: 'password', timeout: 10, authentication_strategy: 'basic' } }
+
+      it 'configures basic auth' do
+        subject.execute
+        expect(http_get_mock).to have_received(:basic_auth).with(options[:user], options[:password])
+        expect(http_get_mock).not_to have_received(:add_field).with('API-KEY', options[:api_key])
+      end
+    end
+
+    describe 'when authentication strategy is api_key' do
+      let(:options) { { api_key: 'my-api-key', timeout: 10, authentication_strategy: 'api_key' } }
+
+      it 'configures api key authentication' do
+        subject.execute
+        expect(http_get_mock).to have_received(:add_field).with('API-KEY', options[:api_key])
+        expect(http_get_mock).not_to have_received(:basic_auth)
+      end
+    end
+
+    describe 'when authentication strategy is not provided' do
+      it 'defaults and configures basic auth' do
+        subject.execute
+        expect(http_get_mock).to have_received(:basic_auth).with(options[:user], options[:password])
+        expect(http_get_mock).not_to have_received(:add_field).with('API-KEY', options[:api_key])
+      end
     end
 
     it 'fires the request' do

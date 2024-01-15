@@ -10,14 +10,15 @@ module Firmenwissen
       end
     end
 
-    SETTINGS = %i[endpoint password mock_data mock_requests persistent_session timeout user]
+    SETTINGS = %i[endpoint password mock_data mock_requests persistent_session timeout user authentication_strategy api_key]
 
     DEFAULT_SETTINGS = {
       endpoint: 'https://www.firmenwissen.de/search/suggest/companywithaddress/{query}{?country}',
       mock_requests: false,
       mock_data: [],
       persistent_session: false,
-      timeout: 5
+      timeout: 5,
+      authentication_strategy: "basic"
     }.freeze
 
     SETTINGS.each do |setting|
@@ -50,6 +51,10 @@ module Firmenwissen
 
     def persistent_session?
       persistent_session
+    end
+
+    def api_key_present?
+      api_key.is_a?(String) && !api_key.empty?
     end
   end
 end
